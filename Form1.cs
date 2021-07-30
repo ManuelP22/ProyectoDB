@@ -16,5 +16,25 @@ namespace ProyectoDB
         {
             InitializeComponent();
         }
+
+        private void Eliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Modificar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void t_i_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
