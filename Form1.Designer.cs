@@ -180,7 +180,7 @@ namespace ProyectoDB
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(697, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(697, -2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 50);
             this.pictureBox1.TabIndex = 1;
