@@ -14,11 +14,12 @@ namespace ProyectoDB.Clases
         public int InsertID;
          public insertGetID(string inCedula, string inNombre, string inApellido) 
          {
-             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
-             SqlCommand cmd = new SqlCommand("st_insert_cliente", conn);
+            string ConnectionString = @"Data Source=LAPTOP-TNM7E1N7\SQLEXPRESS;Initial Catalog=SturismoDB;Integrated Security=True";
              try 
              {
-                 cmd.CommandType = CommandType.StoredProcedure;
+                SqlConnection conn = new SqlConnection(ConnectionString);
+                SqlCommand cmd = new SqlCommand("st_insert_cliente", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
                  cmd.Parameters.Add("@Cedula", inCedula);
                  cmd.Parameters.Add("@Nombre", inNombre);
                  cmd.Parameters.Add("@Apellido", inApellido);
@@ -35,7 +36,7 @@ namespace ProyectoDB.Clases
 
          }
 
-        //SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
+        /*SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
         public DataTable D_listado_Clientes()
         {
             SqlCommand cmd = new SqlCommand("st_insert_cliente", conn);
