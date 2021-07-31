@@ -12,7 +12,7 @@ namespace ProyectoDB.Clases
     class insertGetID
     {
         public int InsertID;
-        /* public insertGetID(string inCedula, string inNombre, string inApellido) 
+         public insertGetID(string inCedula, string inNombre, string inApellido) 
          {
              SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
              SqlCommand cmd = new SqlCommand("st_insert_cliente", conn);
@@ -23,15 +23,19 @@ namespace ProyectoDB.Clases
                  cmd.Parameters.Add("@Nombre", inNombre);
                  cmd.Parameters.Add("@Apellido", inApellido);
                  var returnID = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                InsertID = Convert.ToInt32(returnID.Value);
              }
              catch(Exception e)
              {
                  //
              }
 
-         }*/
+         }
 
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
+        //SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["sql"].ConnectionString);
         public DataTable D_listado_Clientes()
         {
             SqlCommand cmd = new SqlCommand("st_insert_cliente", conn);
@@ -52,11 +56,11 @@ namespace ProyectoDB.Clases
             return dt;
         }
 
-        public string D_Mantenimiento_Clientes(ClassEntidades obje)
+        /*public string D_Mantenimiento_Clientes(ClassEntidades obje)
         {
            // string accion = "";
            // SqlCommand cmd = SqlCommand("")
-        }
+        }*/
         
     }
 }

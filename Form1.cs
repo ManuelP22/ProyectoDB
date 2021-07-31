@@ -36,5 +36,12 @@ namespace ProyectoDB
         {
 
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            var Pru1 = new Clases.insertGetID("00100000004", "Ramon", "Martinez");
+            int intResult = Pru1.InsertID;
+            MessageBox.Show(intResult.ToString());
+        }
     }
 }
