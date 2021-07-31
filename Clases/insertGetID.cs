@@ -14,21 +14,29 @@ namespace ProyectoDB.Clases
         public int InsertID;
          public insertGetID(string inCedula, string inNombre, string inApellido) 
          {
-            string ConnectionString = @"Data Source=LAPTOP-TNM7E1N7\SQLEXPRESS;Initial Catalog=SturismoDB;Integrated Security=True";
+            string ConnectionString = ConfigurationManager.AppSettings["connectionString"].ToString();
              try 
              {
                 SqlConnection conn = new SqlConnection(ConnectionString);
-                SqlCommand cmd = new SqlCommand("st_insert_cliente", conn);
+                /*SqlCommand cmd = new SqlCommand("st_insert_cliente", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                 cmd.Parameters.Add("@Cedula", inCedula);
-                 cmd.Parameters.Add("@Nombre", inNombre);
-                 cmd.Parameters.Add("@Apellido", inApellido);
+                 cmd.Parameters.Add("@cedula", SqlDbType.VarChar).Value = inCedula;
+                 cmd.Parameters.Add("@nombre", SqlDbType.VarChar).Value = inNombre;
+                 cmd.Parameters.Add("@apellido", SqlDbType.VarChar).Value = inApellido;
                  var returnID = cmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                InsertID = Convert.ToInt32(returnID.Value);
-             }
+                InsertID = Convert.ToInt32(returnID.Value);*/
+                int ValueResult = 0;
+                SqlCommand cmd = new SqlCommand("EXEC st_insert_cliente '"+inCedula+"', '"+inNombre+"', '"+inApellido+"'", conn);
+                conn.Open();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                ValueResult = Convert.ToInt32(dt.Rows[0][0]);
+                conn.Close();
+            }
              catch(Exception e)
              {
                  //
