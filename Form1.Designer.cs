@@ -30,7 +30,7 @@ namespace ProyectoDB
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.cmbDestino = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@ namespace ProyectoDB
             this.t_i = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgFactura = new System.Windows.Forms.DataGridView();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -56,13 +56,13 @@ namespace ProyectoDB
             this.turismo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgFactura)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cmbDestino);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -80,14 +80,13 @@ namespace ProyectoDB
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cliente";
             // 
-            // label6
+            // cmbDestino
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 145);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Ticket";
+            this.cmbDestino.FormattingEnabled = true;
+            this.cmbDestino.Location = new System.Drawing.Point(56, 122);
+            this.cmbDestino.Name = "cmbDestino";
+            this.cmbDestino.Size = new System.Drawing.Size(121, 21);
+            this.cmbDestino.TabIndex = 14;
             // 
             // dateTimePicker1
             // 
@@ -99,7 +98,7 @@ namespace ProyectoDB
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 122);
+            this.label4.Location = new System.Drawing.Point(9, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 10;
@@ -108,7 +107,7 @@ namespace ProyectoDB
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 91);
+            this.label3.Location = new System.Drawing.Point(9, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 8;
@@ -117,7 +116,7 @@ namespace ProyectoDB
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 61);
+            this.label2.Location = new System.Drawing.Point(9, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 7;
@@ -126,7 +125,7 @@ namespace ProyectoDB
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 29);
+            this.label1.Location = new System.Drawing.Point(9, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 6;
@@ -134,7 +133,7 @@ namespace ProyectoDB
             // 
             // txtCedula
             // 
-            this.txtCedula.Location = new System.Drawing.Point(56, 88);
+            this.txtCedula.Location = new System.Drawing.Point(55, 26);
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(100, 20);
             this.txtCedula.TabIndex = 5;
@@ -142,14 +141,14 @@ namespace ProyectoDB
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(56, 58);
+            this.txtApellido.Location = new System.Drawing.Point(55, 89);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(100, 20);
             this.txtApellido.TabIndex = 4;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(56, 26);
+            this.txtNombre.Location = new System.Drawing.Point(55, 55);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
             this.txtNombre.TabIndex = 3;
@@ -218,7 +217,7 @@ namespace ProyectoDB
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.dgFactura);
             this.groupBox2.Location = new System.Drawing.Point(76, 281);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(793, 194);
@@ -226,13 +225,21 @@ namespace ProyectoDB
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Consultar";
             // 
-            // dataGridView1
+            // dgFactura
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(778, 169);
-            this.dataGridView1.TabIndex = 5;
+            this.dgFactura.AllowUserToAddRows = false;
+            this.dgFactura.AllowUserToDeleteRows = false;
+            this.dgFactura.AllowUserToResizeColumns = false;
+            this.dgFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgFactura.Location = new System.Drawing.Point(6, 19);
+            this.dgFactura.Name = "dgFactura";
+            this.dgFactura.ReadOnly = true;
+            this.dgFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgFactura.Size = new System.Drawing.Size(778, 169);
+            this.dgFactura.TabIndex = 5;
+            this.dgFactura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFactura_CellContentClick);
+            this.dgFactura.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFactura_CellDoubleClick);
             // 
             // btnImprimir
             // 
@@ -260,6 +267,7 @@ namespace ProyectoDB
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(240, 22);
             this.txtBuscar.TabIndex = 6;
+            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyDown);
             // 
             // Form1
             // 
@@ -282,7 +290,7 @@ namespace ProyectoDB
             this.turismo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgFactura)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -306,14 +314,14 @@ namespace ProyectoDB
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgFactura;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.ComboBox cmbDestino;
     }
 }
 

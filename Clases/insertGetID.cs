@@ -11,7 +11,7 @@ namespace ProyectoDB.Clases
 {
     class insertGetID
     {
-        public int InsertID;
+        public int intGetID;
          public insertGetID(string inCedula, string inNombre, string inApellido) 
          {
             string ConnectionString = ConfigurationManager.AppSettings["connectionString"].ToString();
@@ -36,6 +36,7 @@ namespace ProyectoDB.Clases
                 da.Fill(dt);
                 ValueResult = Convert.ToInt32(dt.Rows[0][0]);
                 conn.Close();
+                intGetID = ValueResult;
             }
              catch(Exception e)
              {
