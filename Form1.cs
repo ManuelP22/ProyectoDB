@@ -165,7 +165,7 @@ namespace ProyectoDB
                     conn.Close();
                     cargarComboDestino();
                     inicomponent();
-                    cargardtFactura();
+                    buscarFactura();
                 }
                 catch (Exception e)
                 {
@@ -182,6 +182,8 @@ namespace ProyectoDB
             enableDisableNombre(false);
             txtCedula.Enabled = true;
             strCodigoFact = "";
+            txtBuscar.Text = "";
+            strBuscar = "";
         }
         private void cargardtFactura()
         {
