@@ -17,11 +17,12 @@ namespace ProyectoDB
         private static SqlConnection conn = new SqlConnection(ConfigurationManager.AppSettings["connectionString"].ToString());
         private int intCli_ID = 0;
         private string strCodigoFact = "";
-        private string strBuscar = "";
-        private static string strDestinoQuery = "Select cedulas as Cedula, (cli_nombre + ' ' + cli_apellido) as Cliente, dest_nombre as Destino, Tic_Num as 'Numero de Ticket', Tic_FechaV as 'Fecha Viaje', Fact_Cod as '# Factura', Cli_nombre, Cli_apellido, Tic_ID from vw_factura_info";
+        private static string strBuscar = "";
+        private static string strDestinoQuery = $"EXEC st_get_factura '{strBuscar}'";
         private static SqlCommand cmdFactura = new SqlCommand(strDestinoQuery, conn);
         private SqlDataAdapter daFactura = new SqlDataAdapter(cmdFactura);
         private DataTable dtFactura = new DataTable();
+        private DataTable dtFacturaMod = new DataTable();
 
         public Form1()
         {
@@ -184,9 +185,7 @@ namespace ProyectoDB
         }
         private void cargardtFactura()
         {
-            conn.Open();
             daFactura.Fill(dtFactura);
-            conn.Close();
             BindingSource bsFactura = new BindingSource();
             bsFactura.DataSource = dtFactura;
             dgFactura.DataSource = bsFactura;
@@ -256,9 +255,16 @@ namespace ProyectoDB
         }
         private void buscarFactura() 
         {
-            cargardtFactura();
-            dtFactura.DefaultView.RowFilter = string.Format($"cedula like '%{txtBuscar.Text}%' or 'Numero de Ticket' like '%{txtBuscar.Text}%'");
+            BindingSource bsFactura = new BindingSource();
+            dtFactura.Clear();
+            strBuscar = txtBuscar.Text.Replace("\r\n", "");
+            strDestinoQuery = $"EXEC st_get_factura '{strBuscar}'";
+            cmdFactura = new SqlCommand(strDestinoQuery, conn);
+            daFactura = new SqlDataAdapter(cmdFactura);
+            daFactura.Fill(dtFactura);
             dgFactura.Refresh();
+            txtBuscar.Text = "";
+            strBuscar = "";
         }
         #endregion
 
