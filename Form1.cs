@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProyectoDB.ReportViewer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -56,6 +57,11 @@ namespace ProyectoDB
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             insertFactura();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir_Ticket();
         }
 
         private void txtCedula_KeyDown(object sender, KeyEventArgs e)
@@ -165,7 +171,7 @@ namespace ProyectoDB
                     conn.Close();
                     cargarComboDestino();
                     inicomponent();
-                    cargardtFactura();
+                    buscarFactura();
                 }
                 catch (Exception e)
                 {
@@ -182,6 +188,8 @@ namespace ProyectoDB
             enableDisableNombre(false);
             txtCedula.Enabled = true;
             strCodigoFact = "";
+            txtBuscar.Text = "";
+            strBuscar = "";
         }
         private void cargardtFactura()
         {
@@ -280,5 +288,23 @@ namespace ProyectoDB
                 buscarFactura();
             }
         }
+
+        private void Imprimir_Ticket()
+        {
+            FrmTicket rticket = new FrmTicket();
+            rticket.Show();
+            string q = "select * from vw_factura_info";
+            SqlCommand cmd = new SqlCommand(q, conn);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds, "vw_factura_info");
+            CReportViajes crTicket = new CReportViajes();
+            crTicket.SetDataSource(ds);
+            rticket.CReportTicket.ReportSource = crTicket;
+            conn.Close();
+            rticket.CReportTicket.Refresh();
+        }
+
+        
     }
 }
