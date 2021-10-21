@@ -293,7 +293,7 @@ namespace ProyectoDB
         {
             FrmTicket rticket = new FrmTicket();
             rticket.Show();
-            string q = "select * from vw_factura_info";
+            string q = $"select * from vw_factura_info where Fact_Cod Like '%{strCodigoFact}%'";
             SqlCommand cmd = new SqlCommand(q, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -302,7 +302,9 @@ namespace ProyectoDB
             crTicket.SetDataSource(ds);
             rticket.CReportTicket.ReportSource = crTicket;
             conn.Close();
-            rticket.CReportTicket.Refresh();
+            rticket.CReportTicket.Refresh();           
+            
+            inicomponent();           
         }
 
         
